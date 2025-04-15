@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { checkAuth, selectUser } from "./features/auth/authSlice";
+import AdminLogin from "./pages/AdminLogin"
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const App = () => {
           path="/signup"
           element={!user ? <SignUpPage /> : <Navigate to="/" />}
         />
+                <Route path="/adminLogin" element={<AdminLogin/>}/>
       </Routes>
       <Toaster />
     </div>

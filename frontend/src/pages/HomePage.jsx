@@ -9,11 +9,13 @@ const HomePage = () => {
   const handleLogout = () => {
     dispatch(logoutThunk());
   };
+    console.log(user);
 
   return (
     <div className="flex justify-center items-center flex-col mt-20 gap-10">
       <div className="flex justify-center items-center gap-4">
         <label htmlFor="">FullName: </label>
+                <div>{user?.role === 'doctor' ? <p>Dr Hai be </p> :<p>Not Doctor</p>}</div>
         <div className="text-blue-900 font-bold text-xl">
           {user?.fullName || "Guest"}
         </div>

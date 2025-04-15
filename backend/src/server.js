@@ -1,10 +1,13 @@
 import express from "express";
 const app = express();
-import AuthRouter from "./routes/auth.route.js";
-import cookieParser from "cookie-parser";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import dotenv from 'dotenv'
 import { connectToDatabase } from "./utils/connectDb.js";
+import AuthRouter from "./routes/auth.route.js";
+import DoctorRouter from "./routes/doctor.route.js"
+import AppointRouter from "./routes/appoint.route.js"
+import AdminRouter from "./routes/admin.route.js"
 
 dotenv.config()
 const PORT = process.env.PORT || 5000;
@@ -23,6 +26,9 @@ app.use(
 connectToDatabase();
 
 app.use("/auth", AuthRouter);
+app.use("/doctor" , DoctorRouter);
+app.use('/', AppointRouter);
+app.use('/admin', AdminRouter);
 
 // after you complete backend then delete this get route
 app.get("/", (req, res) => {
