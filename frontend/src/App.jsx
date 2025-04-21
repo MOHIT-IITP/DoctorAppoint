@@ -20,18 +20,22 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route
-          path="/"
-          element={user ? <HomePage /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
-          element={!user ? <LoginPage /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/signup"
-          element={!user ? <SignUpPage /> : <Navigate to="/" />}
-        />
+                <Route
+                    path="/"
+                    element={user ? <HomePage /> : <Navigate to="/login" />}
+                />
+                <Route
+                    path="/login"
+                    element={!user ? <LoginPage /> : <Navigate to="/" />}
+                />
+                <Route
+                    path="/signup"
+                    element={!user ? <SignUpPage /> : <Navigate to="/" />}
+                />
+                <Route
+                    path="/doctor/:id"
+                    element={!user ? <SignUpPage /> : <Navigate to="/" />}
+                />
                 <Route path="/adminLogin" element={<AdminLogin/>}/>
       </Routes>
       <Toaster />

@@ -9,19 +9,22 @@ export const doctorLogin = async (req, res) => {
         if(!email || !password) {
             return res.status(400).json({message: "All field are required"});
         }
+        
+        // finding doctor by their email
         const user = await  Doctor.findOne({email});
 
         if(!user){
             return res.status(400).json({error: "Credential error"});
         }
-        const isvalid = await bcrypt.compare(password, user.password);
 
+        const isvalid = await bcrypt.compare(password, user.password);
         if(!isvalid){
             return res.status(400).json({error: "Credential error"});
         }
 
         genAuthToken(user._id, res);
 
+        // replace the below with the res.status(200).json({message: "doctor logined successfully"})
         res.status(200).json({
             id: user._id,
             email: user.email,
