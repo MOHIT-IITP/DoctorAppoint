@@ -8,6 +8,7 @@ export const handleAppoint = async (req, res) =>  {
         // here you have to take two :  patient id, doctor id
         // take the doctor id from the route , and the patient id from the user(redux)
         
+        // here first the user should be logged in
         const {id: doctorId} = req.params; 
         const patientId = req.user?.id;
 
